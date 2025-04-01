@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCR Maker Web</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>FCR Maker</h2>
+
+    <!-- Shipper -->
+    <label for="shipper">Shipper</label>
+    <select id="shipper" class="form-select">
+        {% for item in options.shipper %}
+        <option value="{{ item }}">{{ item }}</option>
+        {% endfor %}
+    </select>
+    <button onclick="showAddModal('shipper')" class="btn btn-primary btn-sm mt-2">新規登録</button>
+    <button onclick="showRemoveModal('shipper')" class="btn btn-danger btn-sm mt-2">削除</button>
+
+    <!-- Packing -->
+    <label for="packing">Packing</label>
+    <select id="packing" class="form-select">
+        {% for item in options.packing %}
+        <option value="{{ item }}">{{ item }}</option>
+        {% endfor %}
+    </select>
+    <button onclick="showAddModal('packing')" class="btn btn-primary btn-sm mt-2">新規登録</button>
+    <button onclick="showRemoveModal('packing')" class="btn btn-danger btn-sm mt-2">削除</button>
+
+    <!-- Agent -->
+    <label for="agent">Agent</label>
+    <select id="agent" class="form-select">
+        {% for item in options.agent %}
+        <option value="{{ item }}">{{ item }}</option>
+        {% endfor %}
+    </select>
+    <button onclick="showAddModal('agent')" class="btn btn-primary btn-sm mt-2">新規登録</button>
+    <button onclick="showRemoveModal('agent')" class="btn btn-danger btn-sm mt-2">削除</button>
+
+    <!-- PDF生成 -->
+    <button onclick="generatePDF()" class="btn btn-success mt-3">PDFを生成</button>
+
+    <!-- モーダル -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>新規登録</h3>
+            <input type="text" id="newValue" class="form-control">
+            <button id="confirmAdd" class="btn btn-primary mt-2">追加</button>
+        </div>
+    </div>
+
+    <div id="removeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>削除</h3>
+            <div id="removeList"></div>
+            <button id="confirmRemove" class="btn btn-danger mt-2">削除</button>
+        </div>
+    </div>
+</div>
+
+<script src="/static/scripts.js"></script>
+</body>
+</html>
